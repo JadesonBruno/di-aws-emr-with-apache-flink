@@ -1,0 +1,14 @@
+name: di-aws-emr-with-apache-flink
+
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: di-aws-emr-with-apache-flink
+    env_file:
+      - .env
+    volumes:
+      - ./terraform:/home/ubuntu/data-projects/di-aws-emr-with-apache-flink/terraform
+    restart: unless-stopped
+    command: ["tail", "-f", "/dev/null"]
