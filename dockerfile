@@ -7,6 +7,7 @@ LABEL maintainer="jadesonbruno.a@outlook.com"
 # Update system packages and install necessary dependencies
 RUN apt-get update && \
     apt-get install -y \
+        sudo \
         wget \
         curl \
         openssh-client \
