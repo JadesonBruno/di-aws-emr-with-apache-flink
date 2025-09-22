@@ -2,9 +2,8 @@ name: di-aws-emr-with-apache-flink
 
 services:
   terraform:
-    build:
-      context: .
-      dockerfile: dockerfile
+    build: .
+    image: di-aws-emr-with-apache-flink:dev
     container_name: di-aws-emr-with-apache-flink
     env_file:
       - .env
