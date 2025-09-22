@@ -27,8 +27,8 @@ resource "aws_iam_role" "emr_service_role" {
 
 
 # IAM Role Policy Attachment for EMR Cluster
-resource "aws_iam_role_policy_attachment" "emr__policy_attachment" {
-    role = aws_iam_role.emr_cluster_role.name
+resource "aws_iam_role_policy_attachment" "emr_service_policy_attachment" {
+    role = aws_iam_role.emr_service_role.name
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceRole"
 }
 
