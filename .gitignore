@@ -3,6 +3,7 @@
 
 ### Local Environment Variables ###
 .env
+keys/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
