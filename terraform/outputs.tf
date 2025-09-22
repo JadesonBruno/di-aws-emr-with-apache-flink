@@ -5,5 +5,5 @@ output "emr_ssh_key_pem" {
 
 # EMR Cluster Master Public DNS
 output "master_public_dns" {
-  value = aws_emr_cluster.emr_cluster.master_public_dns
+  value = module.emr.master_public_dns
 }
