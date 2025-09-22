@@ -71,7 +71,7 @@ resource "aws_emr_cluster" "emr_cluster" {
     ]
 
     lifecycle {
-        ignore_changes = ["step"]  // Ignore changes to steps to prevent recreation of the cluster
+        ignore_changes = [step]  // Ignore changes to steps to prevent recreation of the cluster
     }
 
     tags = {
