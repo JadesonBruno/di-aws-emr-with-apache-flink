@@ -53,20 +53,24 @@ resource "aws_emr_cluster" "emr_cluster" {
         {
             name = "wordcount"
             action_on_failure = "TERMINATE_CLUSTER"
-            hadoop_jar_step = {
-                jar = "command-runner.jar"
-                args = [
-                    "flink",
-                    "run",
-                    "-m",
-                    "yarn-cluster",
-                    "/usr/lib/flink/examples/streaming/WordCount.jar",
-                    "--input",
-                    "s3a://${var.emr_bucket_name}/data/inputs/words.txt",
-                    "--output",
-                    "s3://${var.emr_bucket_name}/data/outputs/wordcount/"
-                ]
-            }
+            hadoop_jar_step = [
+                {
+                    jar = "command-runner.jar"
+                    main_class = ""
+                    properties = {}
+                    args = [
+                        "flink",
+                        "run",
+                        "-m",
+                        "yarn-cluster",
+                        "/usr/lib/flink/examples/streaming/WordCount.jar",
+                        "--input",
+                        "s3a://${var.emr_bucket_name}/data/inputs/words.txt",
+                        "--output",
+                        "s3a://${var.emr_bucket_name}/data/outputs/wordcount/"
+                    ]   
+                }
+            ]
         }
     ]
 
