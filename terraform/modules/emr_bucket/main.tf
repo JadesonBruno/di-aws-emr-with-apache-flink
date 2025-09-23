@@ -40,7 +40,7 @@ resource "aws_s3_bucket_versioning" "emr_bucket_versioning" {
 
 resource "aws_s3_object" "data" {
     bucket = aws_s3_bucket.emr_bucket.id
-    key    = "data/words.txt"
+    key    = "data/inputs/words.txt"
     source = "${path.module}/data/inputs/words.txt"
     content_type = "text/plain"
 }
