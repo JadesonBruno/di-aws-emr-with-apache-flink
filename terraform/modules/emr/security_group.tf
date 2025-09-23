@@ -19,6 +19,10 @@ resource "aws_security_group" "master_security_group" {
     }
 
     revoke_rules_on_delete = true
+    
+    lifecycle {
+      create_before_destroy = true
+    }
 
     tags = {
         Name = "${var.project_name}-${var.environment}-master-security-group"
@@ -55,6 +59,12 @@ resource "aws_security_group" "slave_security_group" {
         to_port = 0
         protocol = "-1"
         cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    revoke_rules_on_delete = true
+
+    lifecycle {
+        create_before_destroy = true
     }
 
     tags = {
