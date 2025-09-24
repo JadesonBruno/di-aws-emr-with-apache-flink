@@ -105,8 +105,6 @@ resource "aws_nat_gateway" "main" {
 
 # Public Route Table
 resource "aws_route_table" "public" {
-  count = length(aws_subnet.public)
-
   vpc_id = aws_vpc.main.id
 
   route {
@@ -115,7 +113,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-public-rt-${substr(data.aws_availability_zones.available.names[count.index], -2, 2)}"
+    Name = "${var.project_name}-${var.environment}-public-rt"
     Project = var.project_name
     Environment = var.environment
     Type = "public"
@@ -149,7 +147,7 @@ resource "aws_route_table_association" "public" {
   count = length(aws_subnet.public)
 
   subnet_id = aws_subnet.public[count.index].id
-  route_table_id = aws_route_table.public[count.index].id
+  route_table_id = aws_route_table.public.id
 }
 
 
