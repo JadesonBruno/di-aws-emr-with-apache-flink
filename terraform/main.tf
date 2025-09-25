@@ -9,7 +9,7 @@ module "vpc" {
 
 
 # EMR Logs Bucket Module
-module "emr_logs_bucket" {
+module "emr_bucket" {
     source = "./modules/emr_bucket"
     project_name = var.project_name
     environment = var.environment
@@ -25,7 +25,7 @@ module "emr" {
     public_subnet_ids = module.vpc.public_subnet_ids    
     emr_release_label = var.emr_release_label
     emr_applications = var.emr_applications
-    emr_bucket_name = module.emr_logs_bucket.emr_bucket_name
+    emr_bucket_name = module.emr_bucket.emr_bucket_name
     main_instance_type = var.main_instance_type
     main_instance_count = var.main_instance_count
     core_instance_type = var.core_instance_type
